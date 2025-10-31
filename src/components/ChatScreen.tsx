@@ -93,10 +93,43 @@ export const ChatScreen = ({ onReturn, onGoToWelcome }: ChatScreenProps) => {
           className="absolute inset-0 w-full h-full object-contain pointer-events-none"
         />
         <div 
-          className="relative z-10 w-[60%] sm:w-[70%] md:w-[68%] h-[58%] sm:h-[60%] md:h-[62%] overflow-y-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 scrollbar-thin scrollbar-thumb-[hsl(var(--gold))] scrollbar-track-transparent mt-[10%] sm:mt-[8%] md:mt-[6%]"
+          className="relative z-10 w-[70%] sm:w-[75%] md:w-[72%] lg:w-[68%] h-[52%] sm:h-[55%] md:h-[58%] lg:h-[62%] overflow-y-auto px-2 sm:px-3 md:px-5 lg:px-6 py-2 sm:py-3 md:py-5 lg:py-6 scrollbar-thin scrollbar-thumb-[hsl(var(--gold))] scrollbar-track-transparent mt-[12%] sm:mt-[10%] md:mt-[8%] lg:mt-[6%] flex flex-col items-center justify-start"
         >
-...
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={`mb-3 sm:mb-4 md:mb-5 w-full text-center ${
+                message.startsWith("Tu mensaje:")
+                  ? "text-[hsl(var(--gold))] font-semibold"
+                  : "text-[hsl(var(--dark-brown))]"
+              }`}
+            >
+              <p className="text-[20px] p-[9px] sm:text-sm md:text-base lg:text-lg leading-relaxed whitespace-pre-line">
+                {message}
+              </p>
+            </div>
+          ))}
+
+          {showInput && (
+            <form onSubmit={handleSubmit} className="w-full mt-4 sm:mt-5 md:mt-6 flex flex-col items-center gap-3">
+              <input
+                type="text"
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                placeholder="Escribe tu nombre y tópico..."
+                className="w-full px-3 py-2 sm:px-4 sm:py-2.5 md:px-5 md:py-3 rounded-lg border-2 border-[hsl(var(--gold))] bg-[hsl(var(--parchment))] text-[hsl(var(--dark-brown))] text-xs sm:text-sm md:text-base placeholder:text-[hsl(var(--dark-brown))]/60 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--gold-glow))]"
+              />
+              <button
+                type="submit"
+                className="px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--gold-glow))] text-[hsl(var(--dark-brown))] rounded-full font-bold hover:scale-105 transition-transform duration-300 text-xs sm:text-sm md:text-base"
+              >
+                Enviar
+              </button>
+            </form>
+          )}
+
           <div ref={chatEndRef} />
+        
         </div>
       </div>
     </div>

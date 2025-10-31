@@ -19,6 +19,7 @@ export const MainScreen = ({
   };
 
   return (
+      <div className="container px-4 sm:px-6 lg:px-8">
     <div className="relative w-screen h-screen overflow-hidden">
       {/* Background with reduced opacity overlay */}
       <div
@@ -150,6 +151,7 @@ export const MainScreen = ({
           QUIERO SOPORTE / REEMBOLSO
         </button>
       </div>
+    </div>
     </div>
   );
 };
