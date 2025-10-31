@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 30 30% 10%;
+    --foreground: 40 65% 95%;
+
+    --card: 35 35% 15%;
+    --card-foreground: 40 65% 95%;
+
+    --popover: 35 35% 15%;
+    --popover-foreground: 40 65% 95%;
+
+    --primary: 43 88% 51%;
+    --primary-foreground: 30 45% 15%;
+
+    --secondary: 40 65% 75%;
+    --secondary-foreground: 30 45% 15%;
+
+    --muted: 35 25% 25%;
+    --muted-foreground: 40 35% 65%;
+
+    --accent: 45 100% 65%;
+    --accent-foreground: 30 45% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 65% 95%;
+
+    --border: 40 30% 30%;
+    --input: 40 30% 25%;
+    --ring: 43 88% 51%;
+
+    --radius: 1rem;
+
+    --gold: 43 88% 51%;
+    --gold-glow: 45 100% 65%;
+    --gold-light: 48 95% 70%;
+    --parchment: 40 65% 75%;
+    --dark-brown: 30 45% 15%;
+    --overlay: 30 30% 5%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Georgia, serif;
+    overflow: hidden;
+  }
+}
+
+@keyframes golden-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px hsl(var(--gold-glow)));
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 20px hsl(var(--gold-glow))) drop-shadow(0 0 40px hsl(var(--gold-glow) / 0.5));
+  }
+}
+
+@keyframes golden-pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px hsl(var(--gold-glow)));
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.01);
+    filter: drop-shadow(0 0 15px hsl(var(--gold-glow))) drop-shadow(0 0 30px hsl(var(--gold-glow) / 0.4));
+  }
+}
+
+@keyframes gentle-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px hsl(var(--gold) / 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 10px hsl(var(--gold) / 0.5));
+  }
+}
+
+@keyframes golden-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px hsl(var(--gold-glow)));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px hsl(var(--gold-glow))) drop-shadow(0 0 30px hsl(var(--gold-glow) / 0.6));
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold));
+  border-radius: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold-glow));
+}
